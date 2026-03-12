@@ -35,26 +35,23 @@ class MainView(tk.Frame):
 
     def build_footer(self):
         # Total en caisse
-        total_frame = tk.Frame(self)
-        total_frame.pack(fill="x", pady=5, padx=10)
-        tk.Label(total_frame, text="Total en caisse").pack(side="left")
+        total_frame = self.create_footer_line("Total en caisse")
         tk.Label(total_frame, textvariable=self.total_var).pack(side="right")
 
         # Fond de caisse
-        base_frame = tk.Frame(self)
-        base_frame.pack(fill="x", pady=5, padx=10)
-        tk.Label(base_frame, text="Fond de caisse").pack(side="left")
+        base_frame = self.create_footer_line("Fond de caisse")
         tk.Label(base_frame, text=BASE_CASH).pack(side="right")
 
         # Recette réelle
-        revenue_frame = tk.Frame(self)
-        revenue_frame.pack(fill="x", pady=5, padx=10)
-        tk.Label(revenue_frame, text="Recette réelle").pack(side="left")
+        revenue_frame = self.create_footer_line("Recette réelle")
         tk.Label(revenue_frame, textvariable=self.revenue_var).pack(side="right")
 
         # Recette attendue (entrée)
-        expected_frame = tk.Frame(self)
-        expected_frame.pack(fill="x", pady=5, padx=10)
-        tk.Label(expected_frame, text="Recette sur feuille").pack(side="left")
-        self.expected_entry = tk.Entry(expected_frame, textvariable=self.expected_var, width=6, justify="right")
-        self.expected_entry.pack(side="right")
+        expected_frame = self.create_footer_line("Recette sur feuille de caisse")
+        tk.Entry(expected_frame, textvariable=self.expected_var, width=6, justify="right").pack(side="right")
+
+    def create_footer_line(self, label_text):
+        frame = tk.Frame(self)
+        frame.pack(fill="x", pady=5, padx=10)
+        tk.Label(frame, text=label_text).pack(side="left")
+        return frame
