@@ -21,6 +21,7 @@ class MainView(tk.Frame):
         self.build_money_widgets(on_change)
         self.build_footer()
 
+
     def build_money_widgets(self, on_change):
         header = tk.Frame(self)
         header.pack(fill="x", pady=5)
