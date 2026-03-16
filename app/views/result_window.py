@@ -1,5 +1,5 @@
 import tkinter as tk
-from app.services.window_service import lock_window_size
+from app.services.window_service import lock_window_size, center_window
 
 class ResultWindow(tk.Toplevel):
     """Fenêtre de résultat avec message et répartition de billets."""
@@ -25,4 +25,6 @@ class ResultWindow(tk.Toplevel):
             tk.Label(frame, text=value).pack(side="left", expand=True)
             tk.Label(frame, text=quantity).pack(side="left", expand=True)
 
+        self.update_idletasks()
         lock_window_size(self)
+        center_window(self)

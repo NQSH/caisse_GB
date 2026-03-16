@@ -3,7 +3,7 @@ from app.constants import BASE_CASH
 from app.views.main_view import MainView
 from app.views.result_window import ResultWindow
 from app.services.cash_service import compute_total, compute_revenue, compute_daily_revenue
-from app.services.window_service import lock_window_size
+from app.services.window_service import lock_window_size, center_window
 
 
 class App(tk.Tk):
@@ -19,8 +19,10 @@ class App(tk.Tk):
 
         # Bouton valider
         tk.Button(self.view, text="Valider", command=self.on_submit).pack(pady=5)
-
+        
+        self.update_idletasks()
         lock_window_size(self)
+        center_window(self)
 
         
     def update_totals(self):
